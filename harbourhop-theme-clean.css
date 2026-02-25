@@ -1,0 +1,297 @@
+/* Harbourhop-inspired portable theme (close match)
+   Source palette & typography derived from harbourhop.nl exported CSS.
+*/
+
+/* ---------------------------
+   Fonts (use same hosted files)
+---------------------------- */
+@font-face {
+  font-family: Inter;
+  font-style: normal;
+  font-weight: 300 900;
+  font-display: swap;
+  src: url("https://www.harbourhop.nl/wp-content/themes/harbourhoptheme_on2024/assets/fonts/inter/Inter-VariableFont_slnt,wght.woff2") format("woff2");
+}
+@font-face {
+  font-family: Cardo;
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("https://www.harbourhop.nl/wp-content/themes/harbourhoptheme_on2024/assets/fonts/cardo/cardo_normal_400.woff2") format("woff2");
+}
+@font-face {
+  font-family: Cardo;
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: url("https://www.harbourhop.nl/wp-content/themes/harbourhoptheme_on2024/assets/fonts/cardo/cardo_italic_400.woff2") format("woff2");
+}
+@font-face {
+  font-family: Cardo;
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("https://www.harbourhop.nl/wp-content/themes/harbourhoptheme_on2024/assets/fonts/cardo/cardo_normal_700.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Neutra Display";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("https://www.harbourhop.nl/wp-content/uploads/fonts/Neutra-Display-Titling.otf") format("opentype");
+}
+@font-face {
+  font-family: "Neutra Text";
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("https://www.harbourhop.nl/wp-content/uploads/fonts/NeutraText-Book.otf") format("opentype");
+}
+@font-face {
+  font-family: Montserrat;
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("https://www.harbourhop.nl/wp-content/uploads/fonts/Montserrat-Regular.ttf") format("truetype");
+}
+@font-face {
+  font-family: Montserrat;
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("https://www.harbourhop.nl/wp-content/uploads/fonts/Montserrat-SemiBold.ttf") format("truetype");
+}
+
+/* ---------------------------
+   Design tokens
+---------------------------- */
+:root{
+  /* Core palette */
+  --hh-base: #147163;
+  --hh-base-2: #b34038;
+  --hh-contrast: #faeecf;
+  --hh-contrast-2: #faeecf;
+  --hh-contrast-3: #A4A4A4;
+  --hh-accent: #cfcabe;
+  --hh-accent-2: #c2a990;
+  --hh-accent-3: #d8613c;
+  --hh-accent-4: #b1c5a4;
+  --hh-accent-5: #b5bdbc;
+
+  /* Type */
+  --hh-font-body: "Inter", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  --hh-font-heading: "Neutra Display", "Cardo", Georgia, serif;
+  --hh-font-link: "Montserrat", "Inter", system-ui, sans-serif;
+
+  /* Sizing (mirrors WP theme.json clamps) */
+  --hh-text-sm: 0.9rem;
+  --hh-text-md: 1.05rem;
+  --hh-h1: clamp(1.39rem, 1.39rem + ((1vw - 0.2rem) * 0.767), 1.85rem);
+  --hh-h2: clamp(1.85rem, 1.85rem + ((1vw - 0.2rem) * 1.083), 2.5rem);
+  --hh-h3: var(--hh-h1);
+  --hh-h4: clamp(1.1rem, 0.9466rem + 0.767vw, 1.5rem);
+
+  /* Layout */
+  --hh-content: 620px;
+  --hh-wide: 1280px;
+  --hh-gutter: min(6.5rem, 8vw);
+
+  /* UI */
+  --hh-radius: 0.33rem;
+  --hh-btn-pad-y: 0.6rem;
+  --hh-btn-pad-x: 1rem;
+  --hh-line: 1.55;
+}
+
+/* ---------------------------
+   Minimal reset
+---------------------------- */
+*{ box-sizing: border-box; }
+html, body{ height: 100%; }
+body{ margin: 0; }
+img, svg, video{ max-width: 100%; height: auto; }
+button, input, select, textarea{ font: inherit; color: inherit; }
+a{ color: inherit; }
+
+/* ---------------------------
+   Base page styling (close match)
+---------------------------- */
+body{
+  background-color: var(--hh-base);
+  color: var(--hh-contrast);
+  font-family: var(--hh-font-body);
+  font-size: var(--hh-text-md);
+  font-style: normal;
+  font-weight: 400;
+  line-height: var(--hh-line);
+
+  /* mimic “global padding” feel without WP wrapper */
+  padding-left: var(--hh-gutter);
+  padding-right: var(--hh-gutter);
+}
+
+/* A centered content column (similar to WP content-size) */
+.container{
+  max-width: var(--hh-content);
+  margin-left: auto;
+  margin-right: auto;
+}
+.container-wide{
+  max-width: var(--hh-wide);
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Common section rhythm */
+section{
+  padding-top: 1.2rem;
+  padding-bottom: 1.2rem;
+}
+.section-spacious{
+  padding-top: min(4rem, 5vw);
+  padding-bottom: min(4rem, 5vw);
+}
+
+/* ---------------------------
+   Typography
+---------------------------- */
+h1, h2, h3, h4, h5, h6{
+  color: var(--hh-contrast);
+  font-family: var(--hh-font-heading);
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.2;
+  margin: 0 0 0.6em 0;
+}
+h1{
+  font-size: var(--hh-h1);
+  line-height: 1.15;
+  text-transform: capitalize;
+}
+h2{ font-size: var(--hh-h2); }
+h3{ font-size: var(--hh-h3); }
+h4{ font-size: var(--hh-h4); }
+h5{ font-size: var(--hh-text-md); }
+h6{ font-size: var(--hh-text-sm); }
+
+p{ margin: 0 0 1em 0; }
+
+/* Links: Montserrat, underlined, bold-ish */
+a{
+  color: var(--hh-contrast);
+  font-family: var(--hh-font-link);
+  font-size: clamp(0.929rem, 0.772rem + 0.785vw, 1.4rem);
+  font-style: normal;
+  font-weight: 600;
+  line-height: 1;
+  text-decoration: underline;
+}
+a:hover{ text-decoration: none; }
+
+/* Optional helper classes */
+.text-contrast{ color: var(--hh-contrast); }
+.text-base{ color: var(--hh-base); }
+.text-base-2{ color: var(--hh-base-2); }
+.muted{ color: var(--hh-contrast-3); }
+
+/* ---------------------------
+   Buttons (ported from .wp-element-button rules)
+---------------------------- */
+button,
+.btn,
+input[type="button"],
+input[type="submit"],
+input[type="reset"]{
+  background-color: var(--hh-contrast);
+  border-radius: var(--hh-radius);
+  border: 0;
+  color: var(--hh-base);
+  font-size: var(--hh-text-sm);
+  font-weight: 500;
+  padding: var(--hh-btn-pad-y) var(--hh-btn-pad-x);
+  text-decoration: none;
+  cursor: pointer;
+}
+button:hover,
+.btn:hover,
+input[type="button"]:hover,
+input[type="submit"]:hover,
+input[type="reset"]:hover{
+  background-color: var(--hh-contrast-2);
+  color: var(--hh-base);
+}
+button:focus-visible,
+.btn:focus-visible,
+input[type="button"]:focus-visible,
+input[type="submit"]:focus-visible,
+input[type="reset"]:focus-visible{
+  outline: 2px solid var(--hh-contrast);
+  outline-offset: 2px;
+}
+
+/* Secondary button variant */
+.btn-secondary{
+  background: transparent;
+  border: 1px solid var(--hh-contrast);
+  color: var(--hh-contrast);
+}
+.btn-secondary:hover{
+  background: rgba(250, 238, 207, 0.12);
+}
+
+/* ---------------------------
+   Forms (simple, portable)
+---------------------------- */
+label{
+  font-family: var(--hh-font-link);
+  font-weight: 600;
+}
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+input[type="url"],
+input[type="search"],
+textarea,
+select{
+  width: 100%;
+  background: rgba(250, 238, 207, 0.08);
+  border: 1px solid rgba(250, 238, 207, 0.35);
+  border-radius: var(--hh-radius);
+  padding: 0.65rem 0.8rem;
+  outline: none;
+}
+input::placeholder,
+textarea::placeholder{
+  color: rgba(250, 238, 207, 0.7);
+}
+input:focus,
+textarea:focus,
+select:focus{
+  border-color: rgba(250, 238, 207, 0.8);
+  box-shadow: 0 0 0 2px rgba(250, 238, 207, 0.18);
+}
+
+/* ---------------------------
+   Small utilities for quick porting
+---------------------------- */
+.card{
+  background: rgba(250, 238, 207, 0.08);
+  border: 1px solid rgba(250, 238, 207, 0.25);
+  border-radius: var(--hh-radius);
+  padding: 1.2rem;
+}
+
+.hr{
+  border: 0;
+  border-top: 1px solid rgba(250, 238, 207, 0.25);
+  margin: 1.5rem 0;
+}
+
+/* If you want the “page cover” vibe seen in the export */
+.page-cover::before{
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-color: rgb(20, 113, 99); /* matches export */
+  z-index: -1;
+}
